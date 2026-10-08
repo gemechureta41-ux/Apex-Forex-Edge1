@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="om">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apex Forex Edge - Professional Forex Academy</title>
+    <style>
+        body {
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            background-color: #050b14;
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        @media print {
+            body { display: none; }
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background: #0a1128;
+            border-bottom: 1px solid #1e293b;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ff6600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        nav a {
+            color: #cbd5e1;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+        nav a:hover {
+            color: #ff6600;
+        }
+        .actions {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        .lang-select {
+            background: #1e293b;
+            color: white;
+            border: 1px solid #334155;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #ff6600, #ff8533);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .btn-primary:hover {
+            opacity: 0.9;
+        }
+        .hero {
+            text-align: center;
+            padding: 100px 20px;
+            background: radial-gradient(circle at center, #0f172a 0%, #050b14 100%);
+        }
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        .hero h1 span {
+            color: #ff6600;
+        }
+        .hero p {
+            color: #94a3b8;
+            font-size: 18px;
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 50px 20px;
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 32px;
+        }
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+        }
+        .module-card {
+            background: #0f172a;
+            border: 1px solid #1e293b;
+            border-radius: 12px;
+            padding: 25px;
+            transition: 0.3s;
+        }
+        .module-card:hover {
+            border-color: #ff6600;
+            transform: translateY(-5px);
+        }
+        .module-card h3 {
+            color: #ff6600;
+            margin-top: 0;
+        }
+        .module-card p {
+            color: #94a3b8;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+        .modal-content {
+            background: #0f172a;
+            border: 1px solid #334155;
+            padding: 40px;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+        .modal-content input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            background: #1e293b;
+            border: 1px solid #475569;
+            color: white;
+            border-radius: 6px;
+            box-sizing: border-box;
+        }
+        footer {
+            background: #0a1128;
+            padding: 40px 20px;
+            text-align: center;
+            border-top: 1px solid #1e293b;
+            color: #94a3b8;
+            margin-top: 50px;
+        }
+        footer p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body oncontextmenu="return false;" oncopy="return false;" oncut="return false;">
+
+    <header>
+        <div class="logo">⚡ Apex Forex Edge</div>
+        <nav>
+            <a href="#" id="nav-home">Home</a>
+            <a href="#modules" id="nav-academy">Academy</a>
+            <a href="#about" id="nav-about">About Us</a>
+            <a href="#contact" id="nav-contact">Contact Us</a>
+        </nav>
+        <div class="actions">
+            <select class="lang-select" id="languageSelector" onchange="changeLanguage(this.value)">
+                <option value="om">Afaan Oromoo</option>
+                <option value="am">አማርኛ</option>
+                <option value="en">English</option>
+            </select>
+            <button class="btn-primary" onclick="openModal()" id="btn-get-started">Get Started</button>
+        </div>
+    </header>
+
+    <div class="hero">
+        <h1 id="hero-title">Master the Markets with <span>Precision</span></h1>
+        <p id="hero-desc">A structured 15-module professional Forex trading curriculum featuring Smart Money Concepts.</p>
+        <button class="btn-primary" onclick="openModal()" id="hero-btn">Start Learning Now</button>
+    </div>
+
+    <div class="container" id="modules">
+        <h2 class="section-title" id="mod-section-title">The 15 Professional Learning Modules</h2>
+        <div class="modules-grid" id="modulesContainer"></div>
+    </div>
+
+    <div class="container" id="about">
+        <h2 class="section-title">About Us</h2>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto; color: #94a3b8;" id="about-text">
+            Apex Forex Edge is an elite educational platform dedicated to teaching traders real market dynamics, liquidity concepts, and risk management without guesswork.
+        </p>
+    </div>
+
+    <div class="container" id="contact">
+        <h2 class="section-title">Contact Us</h2>
+        <p style="text-align: center; color: #94a3b8;">
+            Email: <a href="mailto:gemechureta41@gmail.com" style="color: #ff6600;">gemechureta41@gmail.com</a><br>
+            Phone: <a href="tel:+251917091612" style="color: #ff6600;">+251 917 091 612</a>, Bishoftu, Ethiopia.
+        </p>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Apex Forex Edge. All rights reserved.</p>
+        <p style="font-size: 12px; color: #64748b;">Risk Warning: Trading Forex involves significant risk of capital loss.</p>
+    </footer>
+
+    <!-- Telegram OTP Modal -->
+    <div class="modal" id="authModal">
+        <div class="modal-content">
+            <h3 id="modalTitle">Telegram Verification</h3>
+            <div id="step1">
+                <p style="font-size: 12px; color: #94a3b8; margin-bottom: 10px;">Dura Telegram Bot keenya start godhii email kee ergi, itti aansuudhaii asitti galchi.</p>
+                <input type="email" id="userEmail" placeholder="Email Address">
+                <button class="btn-primary" style="width: 100%; margin-top: 10px;" onclick="requestOTP()">Send OTP to Telegram</button>
+            </div>
+            <div id="step2" style="display: none;">
+                <p style="font-size: 14px; color: #94a3b8;">Koodii dijiitii 4 Telegram Bot keerratti argite galchi.</p>
+                <input type="text" id="otpInput" placeholder="Enter 4-Digit OTP" maxlength="4" style="text-align: center; font-size: 20px; letter-spacing: 5px;">
+                <button class="btn-primary" style="width: 100%; margin-top: 10px;" onclick="verifyOTP()">Verify Code</button>
+            </div>
+            <button onclick="closeModal()" style="background: none; border: none; color: #64748b; margin-top: 15px; cursor: pointer;">Cancel</button>
+        </div>
+    </div>
+
+    <script>
+        const translations = {
+            om: {
+                home: "Home", academy: "Academy", about: "Waa'ee Keenya", contact: "Qunnamtii",
+                getStarted: "Galmaa'i", heroTitle: "Gabaa To'adhu <span>Smart Money</span> ⚡",
+                heroDesc: "Moojuloota barnoota 15 kan qabate fi tooftaa gabaa ammayyaa barsiisu.",
+                heroButton: "Barnoota Jalqabi", modTitle: "Moojuloota Barnoota 15",
+                modules: [
+                    { title: "Moojulii 1: Seensa Forex", p1: "Seenaa gabaa fi bu'uura daldalaa.", p2: "Hiika termoota ijoo fi qajeeltoowwan.", p3: "Gabaa addunyaa fi sa'aatiiwwan isaa.", p4: "Akkaataa itti daldalli jalqabamu." },
+                    { title: "Moojulii 2: Market Structure", p1: "Caasaa gabaa fi jijjiirama murni.", p2: "Market Structure Break (BOS).", p3: "Change of Character (CHoCH).", p4: "Hordofuu murtii gabaa gurguddaa." },
+                    { title: "Moojulii 3: Order Blocks (OB)", p1: "Hiika fi qajeelfama Order Block.", p2: "Bakka gabaan itti deebi'ee ka'u.", p3: "Bullish fi Bearish OB adda baasuu.", p4: "Iddoo itti seensa (Entry) gochuun danda'amuu." },
+                    { title: "Moojulii 4: Fair Value Gaps (FVG)", p1: "Imbalansi gabaa keessatti uumamu.", p2: "Bakkaqaqaqqabumsaa FVG.", p3: "Gabaan gara FVG-tti deebi'uu isaa.", p4: "Tarsiifoo daldala FVG irratti hundaa'e." },
+                    { title: "Moojulii 5: Liquidity Pools", p1: "Bakka liquidity (Stop Loss) kuufamu.", p2: "Liquidity sweep fi manipulation.", p3: "Asia session liquidity hunt.", p4: "Bakka dhaabbanni gurguddaan guurru." },
+                    { title: "Moojulii 6: Premium & Discount", p1: "Kutaa gabaa gurguddoo (Fibonacci).", p2: "Premium zone bakka gurgurtaa.", p3: "Discount zone bakka bittaa.", p4: "Qindaa'ina OTE (Optimal Trade Entry)." },
+                    { title: "Moojulii 7: Multi-Timeframe Analysis", p1: "Qayyabannaa sa'aatii 4 (4H) fi 15M.", p2: "Top-down analysis hojiirra oolchuu.", p3: "Trend gurguddaa waliin hiriiruu.", p4: "Yeroo sirrii itti gabaa seenan." },
+                    { title: "Moojulii 8: Risk Management", p1: "To'annoo maallaqa dhuunfaa.", p2: "Risk-to-Reward ratio sirrii qabaachuu.", p3: "Lot size fi pip calculation.", p4: "Qajeelfama drawdown eeguu." },
+                    { title: "Moojulii 9: Trading Psychology", p1: "Miira keessaa of-to'achuu.", p2: "FOMO fi ta'umsa tasgabbaa'aa.", p3: "Loss fuudhuu danda'uu (Accepting loss).", p4: "Seera daldalaa cimsuu." },
+                    { title: "Moojulii 10: Gold (XAU/USD) Tarsiifoo", p1: "Amala gabaa warqee (Gold).", p2: "New York session volatility.", p3: "Gold liquidity sweeps.", p4: "Tarsiifoo addaa XAU/USD." },
+                    { title: "Moojulii 11: EUR/USD Strategy", p1: "Amala maallaqa Awurooppaa.", p2: "London session setup.", p3: "News impact fi EUR/USD.", p4: "Tarsiifoo gabaa guyyaa." },
+                    { title: "Moojulii 12: Proprietary Trading Rules", p1: "Seera kampanii Prop (Ftn/Goat).", p2: "Trailing drawdown to'achuu.", p3: "Evaluation challenges pass gochuuf.", p4: "Payout rules fi consistency." },
+                    { title: "Moojulii 13: Automated Trading (MQL)", p1: "Seensa MQL4/MQL5 programming.", p2: "Expert Advisor (EA) ijaaruu.", p3: "Moving Average based EA.", p4: "Backtesting strategies." },
+                    { title: "Moojulii 14: Trading Plan & Journal", p1: "Karoora daldalaa barreessuu.", p2: "Trade journal qabachuuf.", p3: "Kufatii irraa barachuu.", p4: "Milkaa'ina galmeessuu." },
+                    { title: "Moojulii 15: Live Execution Mastery", p1: "Qajeelfama daldala dhugaa.", p2: "Live market setup.", p3: "Professional trader mindset.", p4: "Xumura sagantaa fi eebba." }
+                ]
+            },
+            am: {
+                home: "Home", academy: "አካዳሚ", about: "ስለኛ", contact: "ያግኙን",
+                getStarted: "ይመዝገቡ", heroTitle: "የ Forex ንግድ በ <span>Smart Money</span> ይማሩ",
+                heroDesc: "15 ጥልቅ የንግድ ሞጁሎች እና የገበያ ትንተና ስልጠናዎች።",
+                heroButton: "ትምህርት ይጀምሩ", modTitle: "15 የትምህርት ሞጁሎች",
+                modules: [
+                    { title: "ሞጁል 1፡ የ Forex መግቢያ", p1: "የገበያ ታሪክ እና መሰረታዊ ቃላት።", p2: "የForex መሰረታዊ ፅንሰ ሀሳቦች።", p3: "ዓለም አቀፍ የገበያ ሰዓታት።", p4: "ንግድ እንዴት እንደሚጀመር።" },
+                    { title: "ሞጁል 2፡ Market Structure", p1: "የገበያ አወቃቀር እና ለውጦች።", p2: "Market Structure Break (BOS)።", p3: "Change of Character (CHoCH)።", p4: "ዋና ዋና አዝማሚያዎችን መከተል።" },
+                    { title: "ሞጁል 3፡ Order Blocks (OB)", p1: "የOrder Block ትርጉም እና አጠቃቀም።", p2: "ተቋማዊ ትዕዛዞች የሚቀመጡበት ቦታ።", p3: "Bullish እና Bearish OB መለየት።", p4: "የግብይት መግቢያ (Entry) ማግኘት።" },
+                    { title: "ሞጁል 4፡ Fair Value Gaps (FVG)", p1: "በገበያ ውስጥ ያለ ክፍተት (Imbalance)።", p2: "የFVG ዞኖች ትንተና።", p3: "ገበያው ወደ FVG የመመለስ ባህሪ።", p4: "በFVG ላይ የተመሰረተ ስትራቴጂ።" },
+                    { title: "ሞጁል 5፡ Liquidity Pools", p1: "የStop Loss ትዕዛዞች የሚሰበሰቡበት ቦታ።", p2: "Liquidity sweep እና manipulation።", p3: "የእስያ ክፍለ ጊዜ የፈሳሽ አደን።", p4: "ትላልቅ ተቋማት የሚጠቀሙበት ዘዴ።" },
+                    { title: "ሞጁል 6፡ Premium & Discount", p1: "የFibonacci የዋጋ ክልሎች።", p2: "የመሸጫ ዞን (Premium zone)።", p3: "የመግዣ ዞን (Discount zone)።", p4: "የOTE (Optimal Trade Entry) ቅንብር።" },
+                    { title: "ሞጁል 7፡ Multi-Timeframe Analysis", p1: "የ 4 ሰዓት (4H) እና 15 ደቂቃ (15M) ትንተና።", p2: "Top-down analysis አተገባበር።", p3: "ከዋናው አዝማሚያ ጋር መስራት።", p4: "ትክክለኛው የግብይት ሰዓት።" },
+                    { title: "ሞጁል 8፡ Risk Management", p1: "የግል ገንዘብ አስተዳደር (Risk control)።", p2: "ትክክለኛ Risk-to-Reward ምጣኔ።", p3: "Lot size እና pip ስሌት።", p4: "የDrawdown ገደቦችን መጠበቅ።" },
+                    { title: "ሞጁል 9፡ Trading Psychology", p1: "ስሜትን መቆጣጠር።", p2: "FOMO እና ስግብግብነትን ማስወገድ።", p3: "ኪሳራን መቀበል (Accepting loss)።", p4: "ጠንካራ የንግድ ዲሲፕሊን።" },
+                    { title: "ሞጁል 10፡ Gold (XAU/USD) Strategy", p1: "የወርቅ (Gold) ገበያ ባህሪ።", p2: "የኒውዮርክ ክፍለ ጊዜ እንቅስቃሴ።", p3: "የወርቅ liquidity sweeps።", p4: "ለ XAU/USD የተለዩ ስልቶች።" },
+                    { title: "ሞጁል 11፡ EUR/USD Strategy", p1: "የዩሮ እና ዶላር ገበያ ባህሪ።", p2: "የለንደን ክፍለ ጊዜ ቅንብር።", p3: "የዜና ተጽዕኖ በ EUR/USD።", p4: "ዕለታዊ የግብይት ስልት።" },
+                    { title: "ሞጁል 12፡ Prop Trading Rules", p1: "የፕሮፕ ፈንድ ኩባንያዎች ህጎች።", p2: "Trailing drawdown አስተዳደር።", p3: "Evaluation ፈተናዎችን ማለፍ።", p4: "የክፍያ (Payout) መስፈርቶች።" },
+                    { title: "ሞጁል 13፡ Automated Trading (MQL)", p1: "የMQL4/MQL5 ፕሮግራሚንግ መግቢያ።", p2: "Expert Advisor (EA) መገንባት።", p3: "Moving Average ላይ የተመሰረተ EA።", p4: "Backtesting ስልቶች።" },
+                    { title: "ሞጁል 14፡ Trading Plan & Journal", p1: "የግብይት እቅድ ማዘጋጀት።", p2: "የንግድ መዝገብ (Trade journal) መያዝ።", p3: "ከስህተቶች መማር።", p4: "እድገትን መከታተል።" },
+                    { title: "ሞጁል 15፡ Live Execution Mastery", p1: "እውነተኛ የገበያ ግብይት መመሪያ።", p2: "Live market setup።", p3: "የፕሮፌሽናል ነጋዴ አስተሳሰብ።", p4: "የኮርሱ ማጠናቀቂያ እና ማረጋገጫ።" }
+                ]
+            },
+            en: {
+                home: "Home", academy: "Academy", about: "About Us", contact: "Contact Us",
+                getStarted: "Get Started", heroTitle: "Master the Markets with <span>Apex Edge</span>",
+                heroDesc: "A structured 15-module professional Forex trading curriculum featuring Smart Money Concepts.",
+                heroButton: "Start Learning", modTitle: "The 15 Professional Learning Modules",
+                modules: [
+                    { title: "Module 1: Introduction to Forex", p1: "History of trading and foundational vocabulary.", p2: "Understanding exchange rates and currency pairs.", p3: "Global trading sessions and market hours.", p4: "How retail and institutional orders interact." },
+                    { title: "Module 2: Market Structure", p1: "Identifying higher highs and lower lows.", p2: "Market Structure Break (BOS) mechanics.", p3: "Change of Character (CHoCH) shifts.", p4: "Mapping primary trend directions." },
+                    { title: "Module 3: Order Blocks (OB)", p1: "Definition and identification of Order Blocks.", p2: "Institutional footprint recognition.", p3: "Differentiating Bullish and Bearish OBs.", p4: "Refining high-probability entry points." },
+                    { title: "Module 4: Fair Value Gaps (FVG)", p1: "Understanding price imbalances.", p2: "FVG zone mapping on 15M and 4H.", p3: "Price retracement into imbalance zones.", p4: "Trading strategies based on FVG fills." },
+                    { title: "Module 5: Liquidity Pools", p1: "Where retail stop losses accumulate.", p2: "Liquidity sweeps and stop hunts.", p3: "Asia session high/low manipulation.", p4: "Institutional liquidity engineering." },
+                    { title: "Module 6: Premium & Discount", p1: "Fibonacci equilibrium arrays.", p2: "Selling in Premium market zones.", p3: "Buying in Discount market zones.", p4: "Optimal Trade Entry (OTE) setups." },
+                    { title: "Module 7: Multi-Timeframe Analysis", p1: "Syncing 4H bias with 15M execution.", p2: "Top-down analytical frameworks.", p3: "Aligning intraday trades with major trends.", p4: "Timing entries precisely." },
+                    { title: "Module 8: Risk Management", p1: "Capital preservation protocols.", p2: "Calculating risk-to-reward ratios.", p3: "Lot size and pip value math.", p4: "Adhering to drawdown thresholds." },
+                    { title: "Module 9: Trading Psychology", p1: "Controlling emotional impulses.", p2: "Overcoming FOMO and greed.", p3: "Accepting losses professionally.", p4: "Building strict discipline." },
+                    { title: "Module 10: Gold (XAU/USD) Strategy", p1: "Behavioral traits of XAU/USD.", p2: "New York session volatility spikes.", p3: "Gold-specific liquidity sweeps.", p4: "Tailored gold trading setups." },
+                    { title: "Module 11: EUR/USD Strategy", p1: "Characteristics of major currency pairs.", p2: "London session opening maneuvers.", p3: "Fundamental news impact on EUR/USD.", p4: "Intraday currency execution." },
+                    { title: "Module 12: Prop Trading Rules", p1: "Evaluating prop firm parameters.", p2: "Managing trailing drawdowns.", p3: "Passing evaluation challenges.", p4: "Consistency rules and payout structures." },
+                    { title: "Module 13: Automated Trading (MQL)", p1: "Introduction to MQL4 and MQL5.", p2: "Developing basic Expert Advisors (EAs).", p3: "Moving average crossover bots.", p4: "Backtesting strategy optimization." },
+                    { title: "Module 14: Trading Plan & Journal", p1: "Drafting a formal trading plan.", p2: "Maintaining an analytical trade journal.", p3: "Reviewing and grading past trades.", p4: "Continuous performance metrics." },
+                    { title: "Module 15: Live Execution Mastery", p1: "Transitioning to live funded accounts.", p2: "Real-time market execution rules.", p3: "Professional risk mindset.", p4: "Final review and certification." }
+                ]
+            }
+        };
+
+        let currentLang = 'om';
+
+        function changeLanguage(lang) {
+            currentLang = lang;
+            const t = translations[lang];
+            document.getElementById('nav-home').innerText = t.home;
+            document.getElementById('nav-academy').innerText = t.academy;
+            document.getElementById('nav-about').innerText = t.about;
+            document.getElementById('nav-contact').innerText = t.contact;
+            document.getElementById('btn-get-started').innerText = t.getStarted;
+            document.getElementById('hero-title').innerHTML = t.heroTitle;
+            document.getElementById('hero-desc').innerText = t.heroDesc;
+            document.getElementById('hero-btn').innerText = t.heroButton;
+            document.getElementById('mod-section-title').innerText = t.modTitle;
+            renderModules();
+        }
+
+        function renderModules() {
+            const container = document.getElementById('modulesContainer');
+            container.innerHTML = '';
+            const mods = translations[currentLang].modules;
+            mods.forEach((m) => {
+                container.innerHTML += `
+                    <div class="module-card">
+                        <h3>${m.title}</h3>
+                        <p>• ${m.p1}</p>
+                        <p>• ${m.p2}</p>
+                        <p>• ${m.p3}</p>
+                        <p>• ${m.p4}</p>
+                    </div>
+                `;
+            });
+        }
+
+        function openModal() {
+            document.getElementById('authModal').style.display = 'flex';
+            document.getElementById('step1').style.display = 'block';
+            document.getElementById('step2').style.display = 'none';
+        }
+
+        function closeModal() {
+            document.getElementById('authModal').style.display = 'none';
+        }
+
+        async function requestOTP() {
+            const email = document.getElementById('userEmail').value;
+            if(!email) { alert("Maaloo email kee guuti!"); return; }
+
+            try {
+                // Bakka 'http://localhost:3000' tti linkii server Render kee galchi (fkn: https://apex-forex-edge-bot.onrender.com)
+                const response = await fetch('http://localhost:3000/api/send-otp', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email })
+                });
+                const data = await response.json();
+                
+                if(data.success) {
+                    alert(data.message);
+                    document.getElementById('step1').style.display = 'none';
+                    document.getElementById('step2').style.display = 'block';
+                } else {
+                    alert(data.message);
+                }
+            } catch (err) {
+                alert("Server wajjin wal qunnamuun hin danda'amne. Render link kee mirkaneeffadhu.");
+            }
+        }
+
+        async function verifyOTP() {
+            const email = document.getElementById('userEmail').value;
+            const otp = document.getElementById('otpInput').value;
+
+            try {
+                const response = await fetch('http://localhost:3000/api/verify-otp', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, otp })
+                });
+                const data = await response.json();
+
+                if(data.success) {
+                    alert("Galmi/Seensi kee milkaa'eera!");
+                    closeModal();
+                } else {
+                    alert(data.message);
+                }
+            } catch (err) {
+                alert("Erguni kufeera.");
+            }
+        }
+
+        renderModules();
+    </script>
+</body>
+</html>
